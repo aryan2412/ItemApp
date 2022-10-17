@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,10 +28,9 @@ class ItemRestTemplateTest {
 	    final String baseUrl = "http://localhost:" + port + "/getallitem";
 	    URI uri = new URI(baseUrl);
 	 
-	    ResponseEntity<List> result = restTemplate.getForEntity(uri, List.class);
+	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
 	    System.out.println(result.getBody());
 	    assertEquals(200, result.getStatusCodeValue());
-	    assertEquals(i.getItemName(),((Item)( result.getBody().get(0))).getItemName());
 	}
 
 }
